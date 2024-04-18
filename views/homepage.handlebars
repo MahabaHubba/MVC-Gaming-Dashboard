@@ -1,0 +1,31 @@
+<!-- Homepage View -->
+<div class="title container mt-5">
+    <h1>Katekyo Hitman Reborn</h1>
+    <p class="lead">Welcome to the Katekyo Hitman Reborn blog where everyone can talk about this amazing game.</p>
+</div>
+
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {{#each posts}}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title fs-3 mb-4 fw-bold">{{ title }}</h5>
+                    <p class="card-text">{{{format_date createdAt}}}</p>
+                    <p class="card-text">Posted by: {{ user.username }}</p>
+                    <div class="d-grid">
+                        <a href="/post/{{ id }}" class="btn btn-dark mx-auto fw-bold mt-3">View Post</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+{{#unless logged_in}}
+<div class="loginPrompt text-center mt-5">
+    <p>Please <a href="/login">log in</a> to view and create posts.</p>
+</div>
+{{/unless}}
+

@@ -1,0 +1,37 @@
+{{!-- Post View --}}
+<div class="postMainBox container d-flex flex-column justify-content-center align-items-center">
+    <div class="row">
+        <div class="postDetails col text-center">
+            <h1 class="fw-bold">{{ title }}</h1>
+            <p class="fw-bold">Posted by: {{ user.username }}</p>
+            <p class="text-justify mt-4">{{ description }}</p>
+            <p class="date text-end mt-4 mb-2">Date: {{{ format_date createdAt }}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="commentBox col">
+            <h5 class="mt-3 fw-bold">Comments</h5>
+                {{#each comments}}
+                    <div class="comment mb-3">
+                        <p>{{ text }}</p>
+                        <p class="text-end mb-1">By {{ user.username }} on {{{format_date createdAt}}}</p>
+                     </div>
+                {{/each}}
+
+            {{#if logged_in}}
+            <div class="d-flex justify-content-center mt-2">
+                <form class="comment-form mt-2 text-center">
+                    <div class="mb-3">
+                        <textarea id="comment-text" class="form-control" rows="3" placeholder="Add your comment"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark fw-bold mb-4">POST COMMENT</button>
+                </form>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<script src="/js/comment.js"></script>
+
